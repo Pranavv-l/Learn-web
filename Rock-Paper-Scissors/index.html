@@ -11,34 +11,77 @@
         </header>
         <main>
             <section>
-                <script>let computerMove = '';</script>
+
                 <button onclick="
                     chooseComputerMove()
                     if(computerMove === 'rock'){
-                        alert(`The computer chose ${computerMove }. Tie!`)
+                        score.draw++
+                        choiceEl.innerHTML = 'The computer chose Rock'
+                        resultEl.innerHTML = 'Its a Draw!'
                     }else if (computerMove === 'scissors'){
-                        alert(`The computer chose ${computerMove }. You Win!`)
-                    }else{alert(`The computer chose ${computerMove }. You lose!`)}
+                        score.win++
+                        resultEl.innerHTML = 'You Win!'
+                        choiceEl.innerHTML = 'The computer chose Scissors'
+                    }else{
+                        score.loss++
+                        resultEl.innerHTML = 'You Lose!'
+                        choiceEl.innerHTML = 'The computer chose Paper'
+                    }
+
+                        updateScore()
                     ">Rock</button>
                 <button onclick="
                  chooseComputerMove()
                if(computerMove === 'rock'){
-                   alert(`The computer chose ${computerMove }You Win`)
+                    score.win++
+                    resultEl.innerHTML = 'You Win!'
+                    choiceEl.innerHTML = 'The computer chose Rock'
                }else if (computerMove === 'scissors'){
-                   alert(`The computer chose ${computerMove }You Lose`)
-               }else{alert(`The computer chose ${computerMove }. Draw`)}
+                    score.loss++
+                    resultEl.innerHTML = 'You Lose!'
+                    choiceEl.innerHTML = 'The computer chose Scissors'
+               }else{
+                score.draw++
+                resultEl.innerHTML = 'Its a Draw!'
+                choiceEl.innerHTML = 'The computer chose Paper'
+            }
+                updateScore()
                " 
                 >Paper</button>
                 <button onclick="
                  chooseComputerMove()
                if(computerMove === 'rock'){
-                   alert(`The computer chose ${computerMove }You lose!`)
+                    score.loss++
+                    resultEl.innerHTML = 'You Lose!'
+                    choiceEl.innerHTML = 'The computer chose Rock'
                }else if (computerMove === 'scissors'){
-                   alert(`The computer chose ${computerMove }Draw`)
-               }else{alert(` The computer chose ${computerMove } You Win!`)}
+                    score.draw++
+                    resultEl.innerHTML = 'Its a Draw!'
+                    choiceEl.innerHTML = 'The computer chose Scissors'
+               }else{
+                score.win++
+                resultEl.innerHTML = 'You Win!'
+                choiceEl.innerHTML = 'The computer chose Paper'
+                }
+                updateScore()
                ">Scissors</button>
             </section>
+            <section class="para">
+                <p class="js-result "></p>
+                <p class="js-choice"></p>
+                <p class="js-score"></p>
+            </section>
             <script>
+                const resultEl = document.querySelector('.js-result');
+                const choiceEl = document.querySelector('.js-choice');
+                const scoreEl = document.querySelector('.js-score');
+                
+                const score = {
+                    win: 0,
+                    loss: 0,
+                    draw: 0,
+                }
+                let computerMove = '';
                 function chooseComputerMove(){
                     computerMove = Math.random();
                     if(computerMove>=0 && computerMove<1/3){
@@ -49,6 +92,9 @@
                         computerMove = 'scissors';
                     };
                     return computerMove;
+                }
+                function updateScore(){
+                    scoreEl.innerHTML = `Win: ${score.win} Loss: ${score.loss} Draw: ${score.draw}`
                 }
             </script>
         </main>

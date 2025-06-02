@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Learning DOM</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <section>
+            <h1>Learning about DOM</h1>
+            <h2>Youtube</h2>
+            <button onclick="subscribe()" class="js-sub-btn">Subscribe</button>
+        </section>
+        <section>
+            <h2>Cost Calculation</h2>
+            <p>If cart is over 40$ free shipping; else 10$ shipping fee</p>
+            <input class="js-userInput">
+            <button onclick="calculateCost()">Calculate</button>
+            <p class="js-result"></p>
+        </section>
+        
+        <script>
+            function calculateCost(){
+                const userInput = document.querySelector('.js-userInput').value;
+                const resultEl = document.querySelector('.js-result');
+                if(userInput<40){
+                    resultEl.innerText = `Your total cost is: ${Number(userInput) + 10}`;
+                }else{
+                    resultEl.innerText = `Your total cost is: ${userInput}`
+                }
+                
+            }
+            function subscribe(){
+                const subBtn = document.querySelector(".js-sub-btn");
+                if(subBtn.innerText === 'Subscribe'){
+                    subBtn.innerText = 'Subscribed!'
+                }else{
+                    subBtn.innerText = 'Subscribe'
+                }
+            }
+        </script>
+    </body>
+</html>
