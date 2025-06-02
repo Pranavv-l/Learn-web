@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Heads or Tails</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Heads or tails?</h1>
+        </header>
+        <main>
+            <button onclick="    
+                computerGuess()
+                if(computerValue === 'heads'){
+                    score.win += 1
+                    alert(`Correct guess! \n Win: ${score.win} Loss: ${score.loss}`)
+                }else{
+                    score.loss += 1
+                    alert(`Incorrect guess! \n Win: ${score.win} Loss: ${score.loss}`)
+                }
+                localStorage.setItem('score',JSON.stringify(score));
+                ">Heads</button>
+            <button onclick="
+            
+            computerGuess()
+            if(computerValue === 'tails'){
+                score.win += 1
+                alert(`Correct guess! \n Win: ${score.win} Loss: ${score.loss}`)
+            }else{
+                score.loss += 1
+                alert(`Incorrect guess! \n Win: ${score.win} Loss: ${score.loss}`)
+            }
+            localStorage.setItem('score',JSON.stringify(score));
+            ">Tails</button>
+            <button onclick="
+            localStorage.clear('score');
+            score.win = 0;
+            score.loss = 0;
+            ">Clear</button>
+        </main>
+        <script>
+            const score = JSON.parse(localStorage.getItem('score'))||{
+                win: 0,
+                loss: 0
+            }
+
+            function computerGuess(){
+                computerValue = Math.random()
+                if(computerValue>0 && computerValue<1/2){
+                    computerValue = 'heads'
+                }else{
+                    computerValue = 'tails'
+                }
+            }
+            
+        </script>
+    </body>
+</html>
