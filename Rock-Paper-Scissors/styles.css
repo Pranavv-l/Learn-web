@@ -30,6 +30,9 @@ section{
 button{
     padding: 30px;
     font-size: 24px;
-    border-radius: 20px;
+    background-color: transparent;
+    border-radius: 75px;
 }
-
+img{
+    height: 100px;
+}

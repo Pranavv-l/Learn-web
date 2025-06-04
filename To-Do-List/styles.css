@@ -1,0 +1,23 @@
+body{
+    background-color: #171717;
+}
+h1{
+    color: #fefefe;
+    text-align: center;
+    margin-top: 3%;
+}
+section{
+    display: flex;
+    justify-content: center;
+    gap:20px
+}
+input{
+    background-color: transparent;
+    color: white;
+    height: 25px;
+    border: 2px solid white ;
+}
+div{
+    text-align: center;
+    color: #fefefe;
+}

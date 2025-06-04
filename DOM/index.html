@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Learning DOM</title>
-        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <section>
@@ -17,6 +16,16 @@
             <input class="js-userInput">
             <button onclick="calculateCost()">Calculate</button>
             <p class="js-result"></p>
+        </section>
+        <section>
+            <h2>Text shows up!</h2>
+            <p>Enter stuff in the input bar the that text will pop up in a paragraph block!</p>
+            <input class="js-textInput" onkeyup="
+            let userText = document.querySelector('.js-textInput').value;
+            let textEl = document.querySelector('.js-userInputShow')
+            textEl.innerText = userText
+            ">
+            <p class="js-userInputShow"></p>
         </section>
         
         <script>
