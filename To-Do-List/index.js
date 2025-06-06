@@ -1,19 +1,27 @@
 const dataArray=[];
-let totalHtml ="";
+const userInput = document.querySelector('.js-textInput');
+const divElement = document.querySelector('.js-div');
+const dateInput = document.querySelector('.js-dateInput');
 
-function addData(){
-    const userInput = document.querySelector('.js-input');
-    const divElement = document.querySelector('.js-div')
+
+function renderData(){
     const userInputText = userInput.value;
-    dataArray.push(userInputText);
+    const userInputDate = dateInput.value
+    dataArray.push({name:userInputText,dueDate:userInputDate});
+
     addHtmlData();
-    divElement.innerHTML = totalHtml 
-    userInput.value = ""
-    totalHtml=""
 } 
 function addHtmlData(){
+    let totalHtml ="";
     for(let i = 0;i<dataArray.length;i++){
-        let htmlData = `<p>${dataArray[i]}<p/>`;
+        dataObject = dataArray[i];
+        const {name , dueDate} = dataObject;
+        let htmlData = `<p>${name} ${dueDate} <button onclick='
+        dataArray.splice(${i},1);
+        addHtmlData()
+        ' class='js-del-btn'>X</button></p>`;
         totalHtml += htmlData;
     }
+    divElement.innerHTML = totalHtml 
+    userInput.value = ""
 }
