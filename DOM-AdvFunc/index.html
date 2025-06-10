@@ -2,13 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Learning DOM</title>
+        <title>Learning DOM + Adv Functions</title>
     </head>
     <body>
+        <script src="index.js"></script>
         <section>
             <h1>Learning about DOM</h1>
             <h2>Youtube</h2>
-            <button onclick="subscribe()" class="js-sub-btn">Subscribe</button>
+            <button onclick="subscribe(); add()" class="js-sub-btn">Subscribe</button>
         </section>
         <section>
             <h2>Cost Calculation</h2>
@@ -27,26 +28,16 @@
             ">
             <p class="js-userInputShow"></p>
         </section>
+        <h2>Advance functions</h2>
+        <script>changeTitle()</script>
+        <script>add()</script>
+        <button class="js-startBtn" onclick="start()">Start!</button>
+        <button class="js-cartBtn" onclick="addToCart()">Add to cart!</button>
+        <p class="js-cartText"></p>
+        <section>
+
+        </section>
         
-        <script>
-            function calculateCost(){
-                const userInput = document.querySelector('.js-userInput').value;
-                const resultEl = document.querySelector('.js-result');
-                if(userInput<40){
-                    resultEl.innerText = `Your total cost is: ${Number(userInput) + 10}`;
-                }else{
-                    resultEl.innerText = `Your total cost is: ${userInput}`
-                }
-                
-            }
-            function subscribe(){
-                const subBtn = document.querySelector(".js-sub-btn");
-                if(subBtn.innerText === 'Subscribe'){
-                    subBtn.innerText = 'Subscribed!'
-                }else{
-                    subBtn.innerText = 'Subscribe'
-                }
-            }
-        </script>
+        
     </body>
 </html>
