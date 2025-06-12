@@ -658,3 +658,4 @@ const products = [
     ]
   }
 ];
+console.log(products.name);
