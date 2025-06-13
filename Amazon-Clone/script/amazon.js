@@ -86,7 +86,7 @@ document.querySelectorAll(".js-add-cart").forEach((button) => {
         addedCartEl.classList.add("added-to-cart-on")
         clearTimeout(timeId)
         timeId = setTimeout(function(){addedCartEl.classList.remove("added-to-cart-on")},5000)
-
+ 
         console.log(cart)
     })
 })
