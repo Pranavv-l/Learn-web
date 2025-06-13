@@ -25,7 +25,7 @@ products.forEach((product) => {
             </div>
 
             <div class="product-quantity-container">
-                <select>
+                <select class="option-selector">
                 <option selected value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -52,11 +52,15 @@ products.forEach((product) => {
         </div>`
 })
 productEl.innerHTML = productHtml;
-
+let timeId;
 document.querySelectorAll(".js-add-cart").forEach((button) => {
     button.addEventListener('click', () => {
         const productId = button.dataset.productId;
         const cartEl = document.querySelector(".cart-quantity")
+        const valueContainer = button.closest(".product-container")
+        const addedCartEl = valueContainer.querySelector(".added-to-cart")
+        const option = Number(valueContainer.querySelector(".option-selector").value)
+        console.log(option)
         let matchingItem;
         let cartNum =0;
         cart.forEach((item) => {
@@ -65,11 +69,11 @@ document.querySelectorAll(".js-add-cart").forEach((button) => {
             }
         })
         if(matchingItem){
-            matchingItem.quantity++;
+            matchingItem.quantity += option;
         }else{
             cart.push({
                 productId : productId,
-                quantity : 1
+                quantity : option
             })
         }
         cart.forEach(item => {
@@ -77,6 +81,9 @@ document.querySelectorAll(".js-add-cart").forEach((button) => {
         })
         cartEl.innerHTML = cartNum;
 
+        addedCartEl.classList.add("added-to-cart-on")
+        clearTimeout(timeId)
+        timeId = setTimeout(function(){addedCartEl.classList.remove("added-to-cart-on")},5000)
 
         console.log(cart)
     })

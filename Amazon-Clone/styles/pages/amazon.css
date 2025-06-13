@@ -129,6 +129,9 @@
 .product-spacer {
   flex: 1;
 }
+.added-to-cart-on{
+  opacity: 1 !important;
+}
 
 .added-to-cart {
   color: rgb(6, 125, 98);
