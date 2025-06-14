@@ -1,4 +1,4 @@
-import { cart } from '../data/cart.js';
+import { cart, saveToStorage } from '../data/cart.js';
 import { products } from '../data/products.js';
 let productHtml = '';
 const productEl = document.querySelector(".products-grid");
@@ -62,7 +62,6 @@ document.querySelectorAll(".js-add-cart").forEach((button) => {
         const valueContainer = button.closest(".product-container")
         const addedCartEl = valueContainer.querySelector(".added-to-cart")
         const option = Number(valueContainer.querySelector(".option-selector").value)
-        console.log(option)
         let matchingItem;
         let cartNum =0;
         cart.forEach((item) => {
@@ -78,6 +77,8 @@ document.querySelectorAll(".js-add-cart").forEach((button) => {
                 quantity : option
             })
         }
+        saveToStorage()
+
         cart.forEach(item => {
             cartNum += item.quantity
         })
@@ -86,8 +87,6 @@ document.querySelectorAll(".js-add-cart").forEach((button) => {
         addedCartEl.classList.add("added-to-cart-on")
         clearTimeout(timeId)
         timeId = setTimeout(function(){addedCartEl.classList.remove("added-to-cart-on")},5000)
- 
-        console.log(cart)
     })
 })
 
