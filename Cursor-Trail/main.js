@@ -1,8 +1,13 @@
 const body = document.querySelector(".body");
-const trail = document.querySelector(".main-div");
+let id;
 window.addEventListener('mousemove',(event) => {
-    
-    trail.style.left = `${event.clientX}px`
-    trail.style.top = `${event.clientY}px`
-
+    const dot = document.createElement('div');
+    dot.classList.add('main-div');
+    dot.style.left = `${event.clientX}px`;
+    dot.style.top = `${event.clientY}px`;
+    body.appendChild(dot);
+    requestAnimationFrame(() => {
+        dot.style.opacity = '0';
+    })
+    setTimeout(() => body.removeChild(dot),200)
 })
