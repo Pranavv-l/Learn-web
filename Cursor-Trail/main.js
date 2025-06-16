@@ -8,6 +8,7 @@ window.addEventListener('mousemove',(event) => {
     body.appendChild(dot);
     requestAnimationFrame(() => {
         dot.style.opacity = '0';
+        dot.style.transform = 'scale(0.4)';
     })
-    setTimeout(() => body.removeChild(dot),200)
+    setTimeout(() => body.removeChild(dot),700)
 })
