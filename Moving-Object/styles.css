@@ -1,0 +1,8 @@
+body {
+    background-color: antiquewhite;
+}
+img {
+    height: 100px;
+    position: absolute;
+    cursor: grab;
+}
