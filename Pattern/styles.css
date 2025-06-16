@@ -1,0 +1,16 @@
+div {
+    background-color: black;
+    height: 100px;
+    width: 30px;
+    transition: height 0.5 linear;
+}
+  
+section {
+    display: flex;
+    gap: 30px;
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;            
+  }
+
+  
