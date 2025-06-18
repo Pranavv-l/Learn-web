@@ -2,9 +2,15 @@
 html{
     font-size: 100%;
     font-family:"Poppins";
+    height: 100%;
 }
 body {
     background-color: #faebd7;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 header {
     display: flex;
@@ -14,12 +20,13 @@ header {
     position: relative;
     background-color: #FAEBD7;
     margin-top: 2%;
+    flex-shrink: 0;
 }
 .title-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #B36A5E;
+    background-color: #d0dc7f;
     padding: 0rem 1rem;
     border-radius: 20px;
     text-align: center;
@@ -28,18 +35,19 @@ header {
     z-index: 0;
 }
 .points-container {
-    background-color: #B36A5E;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    color: #381D2A;
-    font-weight: bold;
-    z-index: 1;
-}
-.time-container{
-    background-color: #B36A5E;
+    background-color: #381D2A;
+    text-align: center;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     color: white;
+    z-index: 2;
+    margin: 1rem 2rem;
+}
+.time-container{
+    background-color: #d0dc7f;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #381D2A;
     font-weight: bold;
     z-index: 0;
 }
@@ -59,15 +67,19 @@ p{
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(47, 14, 21, 0.529);
-    z-index: 0;
-  }
-.btn-container{
-    display: flex;
-    justify-content: center;
-    position: relative;
     z-index: 1;
-    margin: 20%;
+    display: grid;
+    place-items: center;
+  }
+.item-spawn-area{
+    background-color: #d0dc7f;
+    flex-grow: 1; /* This makes the div take up all available vertical space */
+    position: relative;
+    margin: 1%;
+    border-radius: 30px;
+    
 }
+
 .start-btn{
     padding: 10px 50px;
     border-radius: 20px;
@@ -76,6 +88,8 @@ p{
     border: 3px solid #381D2A;
     background:#381D2A;
     color: white;
+    font-weight: bold;
+
 }
 
 .start-btn:hover {
@@ -88,10 +102,24 @@ p{
 }
 .main-point{
     position:absolute;
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     border-radius: 60px;
-    background-color: #381D2A;
+    background-image: url('point.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.main-bomb{
+    position:absolute;
+    background-image: url('bomb.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50px;
+    width: 50px;
 }
 @keyframes wiggle {
     0%   { transform: rotate(0deg); }
@@ -103,18 +131,9 @@ p{
 
 @media (max-width: 600px) {
     header {
-        flex-direction: column;
         align-items: center;
         gap: 0.5rem;
     }
-
-    .title-container {
-        position: static;
-        transform: none;
-        order: -1; /* Show title first */
-        margin-bottom: 0.5rem;
-    }
-
     h1 {
         font-size: 2rem;
     }
