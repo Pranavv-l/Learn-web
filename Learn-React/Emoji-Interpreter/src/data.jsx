@@ -1,4 +1,3 @@
-function data(){
 
 const emojiDictionary = {
     "😂": "Laughing Face",
@@ -6,6 +5,5 @@ const emojiDictionary = {
     "😢": "Crying Face",
     "🔥": "Fire",
     "🎉": "Party Popper",
-}
 }
 export default emojiDictionary
