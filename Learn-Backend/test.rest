@@ -1,0 +1,11 @@
+### SENDING DATA 
+POST http://localhost:8383/api/data 
+Content-Type: application/json
+
+{
+    "name": "oranges"
+}
+
+### DELETE DATA
+
+DELETE http://localhost:8383/api/data 
