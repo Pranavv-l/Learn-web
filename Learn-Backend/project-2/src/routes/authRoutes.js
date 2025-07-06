@@ -27,8 +27,22 @@ router.post('/register', (req,res) => {
 })
 
 router.post('/login', (req,res) => {
+    const {username,password} =req.body
+    try {
+        const getUser = db.prepare('SELECT * FROM USERS WHERE USERNAME = ?')
+        const user = getUser.get(username)
 
-    res.sendStatus(201)
+        if(!user){return res.status(404).send({message:'User not found'})}
+        const passIsValid = bcrypt.compareSync(password,user.PASSWORD)
+        if(!passIsValid){return res.status(401).send({message:'Incorrect password'})}
+        console.log(user)
+        const token = jwt.sign({id:user.ID},process.env.JWT_SECRET,{expiresIn:'24h'})
+        res.json({token})
+
+    } catch (error) {
+        console.log(error.message)
+        res.sendStatus(503)
+    }
 })
 
 export default router
