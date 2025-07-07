@@ -11,11 +11,11 @@ router.post('/register', (req,res) => {
     const hashedPass = bcrypt.hashSync(password,8)
 
     try {
-        const insertUser = db.prepare(`INSERT INTO USERS (USERNAME, PASSWORD) VALUES (?,?)`)
+        const insertUser = db.prepare(`INSERT INTO USERS (username, password) VALUES (?,?)`)
         const result = insertUser.run(username,hashedPass)
         
         const defaultTodo = 'Drink Water'
-        const insertTodo = db.prepare(`INSERT INTO TODOS (USER_ID, TASK) VALUES (?, ?)`)
+        const insertTodo = db.prepare(`INSERT INTO TODOS (user_id, task) VALUES (?, ?)`)
         insertTodo.run(result.lastInsertRowid,defaultTodo)
 
         const token = jwt.sign({id:result.lastInsertRowid},process.env.JWT_SECRET,{expiresIn:'24h'})
@@ -29,7 +29,7 @@ router.post('/register', (req,res) => {
 router.post('/login', (req,res) => {
     const {username,password} =req.body
     try {
-        const getUser = db.prepare('SELECT * FROM USERS WHERE USERNAME = ?')
+        const getUser = db.prepare('SELECT * FROM USERS WHERE username = ?')
         const user = getUser.get(username)
 
         if(!user){return res.status(404).send({message:'User not found'})}

@@ -4,19 +4,19 @@ db.exec('PRAGMA foreign_keys = ON;')
 
 db.exec(`
         CREATE TABLE USERS(
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        USERNAME TEXT UNIQUE,
-        PASSWORD TEXT
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE,
+        password TEXT
         )
     `)
 
 db.exec(`
     CREATE TABLE TODOS(
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    USER_ID INTEGER,
-    TASK TEXT ,
-    COMPLETED BOOLEAN DEFAULT 0,
-    FOREIGN KEY(USER_ID) REFERENCES USERS(ID)
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    task TEXT ,
+    completed BOOLEAN DEFAULT 0,
+    FOREIGN KEY(user_id) REFERENCES USERS(id)
     ) 
 `)
 export default db
